@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
+    let networkService = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,38 +24,25 @@ class ViewController: UIViewController {
         
         // write url address in string constant
         let urlString = "https://itunes.apple.com/search?term=jack+johnson&limit=25"
-        
+        /*
         request(urlString: urlString) { (searchResponse, error) in
             searchResponse?.results.map({ (track) in
                 print(track.trackName)
                 })
         }
-    }
-    
-    func request(urlString: String, completion: @escaping (SearchResponse?, Error?) -> Void) {
-        // create url with address, specified in urlString constant
-        guard let url = URL(string: urlString) else { return }
+        */
         
-        // activate url with urlSession
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            // for example, when we have low internet, it is possible our interface is hang out
-            // to avoid this problem, our action working asynchronous
-            DispatchQueue.main.async {
-                if let error = error {
-                    print("some error")
-                    completion(nil, error)
-                    return
+        networkService.request(urlString: urlString) { (result) in
+            switch result {
+                
+            case .success(let searchResponse):
+                searchResponse.results.map { (track) in
+                    print(track.trackName)
                 }
-                guard let data = data else { return }
-                do {
-                    let tracks = try JSONDecoder().decode(SearchResponse.self, from: data)
-                    completion(tracks, nil)
-                } catch let jsonError {
-                    print("Failed to decode JSON", jsonError)
-                    completion(nil, jsonError)
-                }
+            case .failure(let error):
+                print("Error:", error)
             }
-            }.resume() // without resume() our url is inactive
+        }
     }
 
     private func setupSearchBar() {

@@ -14,6 +14,7 @@
 		E485DBDB2365F5C200C37DB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E485DBD92365F5C200C37DB0 /* LaunchScreen.storyboard */; };
 		E485DBE323662DE200C37DB0 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485DBE223662DE200C37DB0 /* SearchResponse.swift */; };
 		E485DBE523662DF900C37DB0 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485DBE423662DF900C37DB0 /* Track.swift */; };
+		E485DBE723663B5200C37DB0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485DBE623663B5200C37DB0 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E485DBDC2365F5C200C37DB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E485DBE223662DE200C37DB0 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		E485DBE423662DF900C37DB0 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		E485DBE623663B5200C37DB0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E485DBDC2365F5C200C37DB0 /* Info.plist */,
 				E485DBE223662DE200C37DB0 /* SearchResponse.swift */,
 				E485DBE423662DF900C37DB0 /* Track.swift */,
+				E485DBE623663B5200C37DB0 /* NetworkService.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E485DBE723663B5200C37DB0 /* NetworkService.swift in Sources */,
 				E485DBD32365F5AC00C37DB0 /* ViewController.swift in Sources */,
 				E485DBD12365F5AC00C37DB0 /* AppDelegate.swift in Sources */,
 				E485DBE323662DE200C37DB0 /* SearchResponse.swift in Sources */,
