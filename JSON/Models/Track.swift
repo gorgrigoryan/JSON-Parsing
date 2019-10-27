@@ -10,7 +10,7 @@ import Foundation
 
 struct Track: Decodable {
     var artistName: String
-    var collectionName: String
+    var collectionName: String?
     var trackName: String
     var artworkUrl60: String?
 }

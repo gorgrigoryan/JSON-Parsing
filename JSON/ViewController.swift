@@ -22,27 +22,6 @@ class ViewController: UIViewController {
         setupTableView()
         // add searchController on navigationItem and configure settings
         setupSearchBar()
-        
-        // write url address in string constant
-        let urlString = "https://itunes.apple.com/search?term=jack+johnson&limit=25"
-        /*
-        request(urlString: urlString) { (searchResponse, error) in
-            searchResponse?.results.map({ (track) in
-                print(track.trackName)
-                })
-        }
-        */
-        
-        networkService.request(urlString: urlString) { [weak self] (result) in
-            switch result {
-                
-            case .success(let searchResponse):
-                self?.searchResponse = searchResponse
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print("Error:", error)
-            }
-        }
     }
 
     private func setupSearchBar() {
@@ -79,7 +58,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        // write url address in string constant
+        let urlString = "https://itunes.apple.com/search?term=\(searchText)&limit=25"
+        
+        networkService.request(urlString: urlString) { [weak self] (result) in
+            switch result {
+                
+            case .success(let searchResponse):
+                self?.searchResponse = searchResponse
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print("Error:", error)
+            }
+        }
     }
 }
 
