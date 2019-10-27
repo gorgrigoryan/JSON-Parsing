@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     let networkService = NetworkService()
+    var searchResponse: SearchResponse? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +33,12 @@ class ViewController: UIViewController {
         }
         */
         
-        networkService.request(urlString: urlString) { (result) in
+        networkService.request(urlString: urlString) { [weak self] (result) in
             switch result {
                 
             case .success(let searchResponse):
-                searchResponse.results.map { (track) in
-                    print(track.trackName)
-                }
+                self?.searchResponse = searchResponse
+                self?.tableView.reloadData()
             case .failure(let error):
                 print("Error:", error)
             }
@@ -65,12 +65,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return searchResponse?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "123"
+        let track = searchResponse?.results[indexPath.row]
+        
+        cell.textLabel?.text = track?.trackName
         return cell
     }
 }

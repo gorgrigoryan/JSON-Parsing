@@ -66,11 +66,27 @@
 				E485DBD72365F5C200C37DB0 /* Assets.xcassets */,
 				E485DBD92365F5C200C37DB0 /* LaunchScreen.storyboard */,
 				E485DBDC2365F5C200C37DB0 /* Info.plist */,
-				E485DBE223662DE200C37DB0 /* SearchResponse.swift */,
-				E485DBE423662DF900C37DB0 /* Track.swift */,
-				E485DBE623663B5200C37DB0 /* NetworkService.swift */,
+				E485DBE923663E5900C37DB0 /* Models */,
+				E485DBE823663E4B00C37DB0 /* Networking */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		E485DBE823663E4B00C37DB0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E485DBE623663B5200C37DB0 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E485DBE923663E5900C37DB0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E485DBE223662DE200C37DB0 /* SearchResponse.swift */,
+				E485DBE423662DF900C37DB0 /* Track.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
